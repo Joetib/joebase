@@ -1,0 +1,122 @@
+
+
+body{
+    background: #fcfcfc;
+    padding: 0;
+    margin: 0;
+    
+}
+
+
+.navbar{
+    color: #7dcab2 !important;
+}
+.navbar .title{
+    color: #2cab83 !important;
+}
+.navbar{
+    position: sticky;
+    top:0;
+    left:0;
+    right: 0;
+    z-index: 20;
+}
+.navbar .nav-link {
+    color: #2cab83 !important;
+}
+.banner{
+    padding: 7% 10%;
+    text-align: center;
+
+    background: #8bd6bd;
+    clip-path: polygon(70% 0%,100% 0%, 100% 90%, 20% 100%, 0% 30%);}
+/*
+.banner h1{
+    font-size: 4em;;
+    font-weight: 300;
+}
+*/
+.banner p{
+    font-size: 1.8em;
+    color: #2cab83;
+}
+
+header{
+    padding: 10px 0;
+}
+header .container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.nav {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+.title{
+    font-size: 1.8em;
+    color: #2cab83;
+    text-decoration: none;
+    font-family: cursive;
+}
+.nav-item{
+    padding: 0.6em;
+}
+.nav-item a{
+    text-decoration: none;
+    color: #2cab83;
+}
+
+
+.form-elements {
+    display: flex;
+    flex-direction: column;
+
+}
+.form-elements p{
+    display: flex;
+    flex-direction: column;
+}
+.form-elements p input{
+    padding: 5px 15px;
+}
+.form-elements p input:hover, .form-elements p input:active, .form-elements p input:focus{
+    border: 2px solid #7dcab2;
+    outline: none;
+}
+.bg-default{
+    background: #2cab83;
+}
+.bg-default-2{
+    background: #7dcab2;
+}
+.curve-right{
+    clip-path: circle(100% at 20% 0%);
+}
+.input[type="submit"].btn{
+    width: unset;
+}
+span.helptext, .form-elements ul{
+    font-size: 11px;
+
+}
+.text-gray{
+    color: #ccc;
+}
+.text-default{
+    color: #7dcab2;
+}
+svg{
+    margin: 0 5px;
+    color: #555;
+}
+@media (max-width: 767px) {
+    .p-small-0{
+        padding: 0 !important;
+    }
+    .p-small-t-0{
+        padding-top: 0 !important;
+    }
+}

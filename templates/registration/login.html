@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load crispy_forms_tags %}
+{% block title %} Log In {% endblock %}
+
+{% block content %}
+<div class="d-md-flex flex-row align-items-center py-5 p-small-t-0">
+    <div class="col-md-6 curve-right bg-white shadow pr-5  pl-0">
+        <div class="bg-default p-5 shadow curve-right">
+            <h3 class="display-3"><i class="fas fa-sign-in-alt text-default"></i>Log In</h3>
+            <p class="lead">... for the amazing things in your dashboard</p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="shadow p-5 ">
+            <form class="form" method="POST">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <!--<div class="form-elements">
+                    {{ form.as_p }}
+                </div>
+            -->
+                <p>
+                    <input class="btn btn-success" type="submit" value="Log In">
+                </p>
+            </form>
+        </div>
+    </div>
+    
+</div>
+{% endblock %}

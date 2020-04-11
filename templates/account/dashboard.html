@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - {{ request.user.username }}{% endblock %}
+
+
+{% block content %}
+<div class="row no-gutter">
+    <div class="col-sm-4 shadow py-4">
+        <h3 class="display-4">{{ request.user.username }}</h3>
+        <hr>
+        <table classs="table table-stripped">
+            <tr><td><i class="fas fa-plus"></i>Create New project</td></tr>
+            <tr><td><i class="fas fa-plus"></i>Create New project</td></tr>
+        </table>
+    </div>
+</div>
+{% endblock %}
