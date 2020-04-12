@@ -1,17 +1,31 @@
-{% extends "base.html" %}
-
-{% block title %}Dashboard - {{ request.user.username }}{% endblock %}
+{% extends "dashboard-base.html" %}
 
 
-{% block content %}
-<div class="row no-gutter">
-    <div class="col-sm-4 shadow py-4">
-        <h3 class="display-4">{{ request.user.username }}</h3>
-        <hr>
-        <table classs="table table-stripped">
-            <tr><td><i class="fas fa-plus"></i>Create New project</td></tr>
-            <tr><td><i class="fas fa-plus"></i>Create New project</td></tr>
-        </table>
+{% block title %}Dashboard: {{ request.user.username}}{% endblock %}
+
+{% block dashcontent %}
+<div class="container py-3">
+    <h2 class="display-4">Recent Projects</h2>
+    <hr>
+    <div class="row">
+
+        {% for project in recent_projects %}
+        <div class=" col-md-6 col-lg-4 py-4">
+            <div class="h-100 shadow-sm appear">
+                <div class="bg-default-2  px-4 py-2">
+                    <a href="#" class="title">{{ project.name }}</a>
+                </div>
+                <div class="container py-4">
+                    {{ project.description }}
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+        <div class="col-md-12">
+            <p class="lead text-danger">There are no projects</p>
+        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

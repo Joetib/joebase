@@ -22,4 +22,5 @@ def register(request):
 
 @login_required
 def dashboard(request):
-    return render(request, 'account/dashboard.html')
+    recent_projects = request.user.projects.all()[:10]
+    return render(request, 'account/dashboard.html', {'recent_projects': recent_projects})

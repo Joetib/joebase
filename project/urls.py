@@ -5,5 +5,5 @@ app_name = "project"
 
 urlpatterns = [
     path('', views.index, name="home"),
-    path('create-project/', views.create_project, name="create_project"),
+    path('create-project/', views.create_project, name="create-project"),
 ]

@@ -61,6 +61,10 @@ header .container{
     text-decoration: none;
     font-family: cursive;
 }
+a.title:hover{
+    color: #347a64;
+    text-decoration: none;
+}
 .nav-item{
     padding: 0.6em;
 }
@@ -68,7 +72,9 @@ header .container{
     text-decoration: none;
     color: #2cab83;
 }
-
+a:hover{
+    text-decoration: none;
+}
 
 .form-elements {
     display: flex;
@@ -89,6 +95,7 @@ header .container{
 .bg-default{
     background: #2cab83;
 }
+
 .bg-default-2{
     background: #7dcab2;
 }
@@ -98,20 +105,27 @@ header .container{
 .input[type="submit"].btn{
     width: unset;
 }
-span.helptext, .form-elements ul{
-    font-size: 11px;
 
-}
 .text-gray{
     color: #ccc;
 }
 .text-default{
+    color: #2cab83;
+}
+.text-default-1{
     color: #7dcab2;
+}
+a.text-default:hover{
+    color: #347a64;
 }
 svg{
     margin: 0 5px;
     color: #555;
 }
+.h-min-80{
+    min-height: 80vh;
+}
+
 @media (max-width: 767px) {
     .p-small-0{
         padding: 0 !important;

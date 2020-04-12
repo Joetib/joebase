@@ -73,10 +73,12 @@ class Field(models.Model):
         return f'<Field: {self.name}>'
     
 
-
-
 class Entry(models.Model):
-    field = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='entries')
+    table = models.ForeignKey(Table, on_delete=models.CASCADE, related_name="entries")
+
+class FieldEntry(models.Model):
+    
+    field = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='fieldentries')
     date_created = models.DateTimeField(auto_now_add=True)
     last_modified = models.DateTimeField(auto_now=True)
 

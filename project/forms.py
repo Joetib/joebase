@@ -1,5 +1,5 @@
 from django import forms
-from .models import Project, Table, Field, Entry, File, Text
+from .models import Project, Table, Field, FieldEntry, File, Text
 
 class ProjectCreateForm(forms.ModelForm):
     class Meta:

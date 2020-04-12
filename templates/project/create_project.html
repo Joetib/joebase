@@ -1,0 +1,26 @@
+{% extends "dashboard-base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}Create Project{% endblock %}
+
+{% block dashcontent %}
+<div class="container py-5">
+    <h3>Create a New Project</h3>
+    <p class="lead">An easy backend ...</p>
+    <hr>
+    <div class="container">
+        <div class="p-5 shadow">
+            <form method="POST">
+                {% csrf_token %}
+                {{ project_form | crispy }}
+                <p>
+                    <input type="submit" class="btn btn-success" value="Create Project">
+                </p>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}
