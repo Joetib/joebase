@@ -1,0 +1,60 @@
+{% extends "dashboard-base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %} Project - {{ project.name }}{% endblock %}
+
+{% block dashcontent %}
+<div class="container py-4">
+    <div class="bg-default-2 shadow px-5">
+        <p class="title p-0 m-0">{{ project.name }}</p>
+        <p class="lead p-0 m-0">{{ project.description }}</p>
+    </div>
+    <div class="container py-5">
+        <div class="row">
+
+            {% for table in project.tables.all %}
+            <div class="col-md-4">
+                <div class=" shadow-sm  my-2">
+                    <a href="{% url 'project:table-view' project.id table.id %}"
+                        class="title-sm text-white bg-default d-block p-2">{{ table.name }}</a>
+                    <p class="pt-2 px-2 m-0 font-weight-bold">Fields</p>
+                    <hr>
+                    <ul class="p-0 list-style-none">
+                        {% for field in table.fields.all %}
+                        <li class="text-success">
+                            <div class="row">
+                                <div class="col-8">{{ field.name }}</div>
+                                <div class="col-4">{{ field.field_type }}</div>\
+                            </div>
+                        </li>
+                        <hr>
+                        {% empty %}
+                        <li class="text-danger px-2 m-0">There are no fields</li>
+                        <hr>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            {% empty %}
+            <div class="shadow-sm col-md-12 table p-2">
+                <p class="lead">There are no tables yet</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <div class="shadow-sm p-4">
+                <form method="POST" action="{% url 'project:table-view' project.id %}">
+                    {% csrf_token %}
+                    {{ table_form | crispy }}
+                    <p>
+                        <input type="submit" class="btn btn-success" value="Create Table">
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+</div>
+{% endblock %}

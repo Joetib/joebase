@@ -61,6 +61,12 @@ header .container{
     text-decoration: none;
     font-family: cursive;
 }
+.title-sm{
+    font-size: 1.2em;
+    color: #2cab83;
+    text-decoration: none;
+    font-family: cursive;
+}
 a.title:hover{
     color: #347a64;
     text-decoration: none;
@@ -74,6 +80,9 @@ a.title:hover{
 }
 a:hover{
     text-decoration: none;
+}
+.list-style-none{
+    list-style: none;
 }
 
 .form-elements {

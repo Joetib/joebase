@@ -1,0 +1,29 @@
+{% extends "dashboard-base.html" %}
+
+
+{% load crispy_forms_tags %}
+
+{% block title %}Table - {{ table.name }}{% endblock %}
+
+
+{% block dashcontent %}
+<div class="container py-4">
+    <div class="shadow mb-3 py-2 bg-white">
+        <div class="container">
+        <a href="#" class="title">{{ table.name }}</a>
+        </div>
+    </div>
+
+    
+        <div class="shadow-sm p-4 bg-white my-3">
+            <form method="POST" action="{% url 'project:add-field' table.project.id table.id %}">
+                {% csrf_token %}
+                {{ field_form | crispy }}
+                <p>
+                    <input type="submit" class="btn btn-success" value="Create Table">
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

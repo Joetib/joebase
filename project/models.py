@@ -32,7 +32,7 @@ class Table(models.Model):
         ('A', 'Admin Only'),
         ('B', 'Viewed and edited by authenticated Users'),
         ('C', 'Viewed only by authenticated Users'),
-        ('D', 'Biewed and Edited by all'),
+        ('D', 'Viewed and Edited by all'),
     )
     project = models.ForeignKey(Project, related_name="tables", on_delete=models.CASCADE)
     name=models.CharField(max_length=500)
