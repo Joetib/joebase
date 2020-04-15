@@ -1,5 +1,6 @@
 {% extends "dashboard-base.html" %}
 
+{% load crispy_forms_tags %}
 
 {% block title %}Dashboard: {{ request.user.username}}{% endblock %}
 
@@ -8,12 +9,12 @@
     <h2 class="display-4">Recent Projects</h2>
     <hr>
     <div class="row">
-
+        
         {% for project in recent_projects %}
         <div class=" col-md-6 col-lg-4 py-4">
             <div class="h-100 shadow-sm appear">
                 <div class="bg-default-2  px-4 py-2">
-                    <a href="{% url 'project:project-page' project.id %}" class="title">{{ project.name }}</a>
+                    <a href="{% url 'project:project-page' project.id %}" class="title-sm text-white">{{ project.name }}</a>
                 </div>
                 <div class="container py-4">
                     {{ project.description }}

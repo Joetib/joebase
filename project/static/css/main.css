@@ -16,6 +16,7 @@ body{
 }
 .navbar{
     position: sticky;
+    
     top:0;
     left:0;
     right: 0;
@@ -84,7 +85,11 @@ a:hover{
 .list-style-none{
     list-style: none;
 }
-
+.form.d-md-flex .form-group{
+    padding-left:5px;
+    padding-right: 5px;
+    max-width: 40%;
+}
 .form-elements {
     display: flex;
     flex-direction: column;

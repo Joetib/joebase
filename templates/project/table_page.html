@@ -10,20 +10,101 @@
 <div class="container py-4">
     <div class="shadow mb-3 py-2 bg-white">
         <div class="container">
-        <a href="#" class="title">{{ table.name }}</a>
+            <a href="#" class="title">{{ table.name }}</a>
         </div>
     </div>
 
-    
-        <div class="shadow-sm p-4 bg-white my-3">
-            <form method="POST" action="{% url 'project:add-field' table.project.id table.id %}">
-                {% csrf_token %}
-                {{ field_form | crispy }}
-                <p>
-                    <input type="submit" class="btn btn-success" value="Create Table">
-                </p>
-            </form>
-        </div>
+    <div class="shadow-sm p-4 bg-white my-3">
+        <form method="POST" action="{% url 'project:add-field' table.project.id table.id %}">
+            {% csrf_token %}
+            {{ field_form | crispy }}
+            <p>
+                <input type="submit" class="btn btn-success" value="Create Table">
+            </p>
+        </form>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="display-4">Fields</h3>
+            <hr>
+        </div>
+        {% for field in table.fields.all %}
+        <div class="col-sm-6 col-md-4">
+            <div class="shadow-sm bg-white">
+                <div class="bg-default-2 p-2">
+                    <a class="title-sm text-white" href="#">{{ field.name }}</a>
+                </div>
+                <table class="table">
+                    <tr>
+                        <td>Type</td>
+                        <td class="text-success">
+                            {{ field.get_field_type }}</td>
+                    </tr>
+                    <tr>
+                        <td>Required</td>
+                        <td class="text-success">{{ field.required }}</td>
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+        {% empty %}
+        <p class="text-danger">There are no fields in this table</p>
+        {% endfor %}
+    </div>
+
+    
+   
+</div>
+{% endblock %}
+
+
+{% block extradashcontent %}
+<div class="container">
+    <div class="shadow-sm p-4 bg-white mt-3">
+        <form method="POST" action="{% url 'project:add-entry' table.project.id table.id %}"
+            enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ entry_form | crispy }}
+            <p>
+                <input type="submit" class="btn btn-success" value="Create Table">
+            </p>
+        </form>
+    </div>
+    <h3 class="display-4">Entries made</h3>
+
+    <table class='table shadow'>
+        <thead>
+            <tr>
+                <th>Id</th>
+                {% for field in table.fields.all %}
+                <th>
+                    {{ field.name }}
+                </th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in table.entries.all %}
+            <tr>
+                <td>{{ entry.id }}</td>
+                {% for fieldentry in entry.fieldentries.all %}
+                
+                <td>
+                    {% if fieldentry.field.field_type == 'T' %}
+
+                    {{ fieldentry.text.text }}
+
+                    {% elif fieldentry.field.field_type == 'I' %}
+                    <img class="img-thumbnail" width="60" height="60" src="{{ fieldentry.image.image.url }}" alt="image">
+                    {% elif fieldentry.field.field_type == "F" %}
+                    <a href="{{ fieldentry.file.file.url }}" class="link">{{ fieldentry.file.file }}</a>
+                    {% endif %}
+                </td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endblock %}
